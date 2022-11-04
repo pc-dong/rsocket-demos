@@ -1,1 +1,1 @@
-# rsocket-demos
+# RSocket Demos
