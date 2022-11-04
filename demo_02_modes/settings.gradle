@@ -1,0 +1,6 @@
+rootProject.name = 'demo_02_modes'
+
+
+include 'server-side'
+include 'client-side'
+include 'common'

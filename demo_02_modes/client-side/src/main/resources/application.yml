@@ -1,0 +1,9 @@
+#spring:
+#  rsocket:
+#    server:
+#      transport: tcp
+#      port: 7002
+rsocket.port: 7001
+
+server:
+  port: 8080
