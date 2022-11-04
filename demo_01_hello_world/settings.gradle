@@ -1,0 +1,6 @@
+rootProject.name = 'demo_01_hello_world'
+
+
+include 'server-side'
+include 'client-side'
+include 'common'
