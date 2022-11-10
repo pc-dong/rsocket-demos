@@ -32,24 +32,25 @@ public class RsocketController {
 
 
     @MessageMapping("toUpperCase")
-    Mono<String> toUpperCase(@Payload String payload) {
-        return Mono.just(payload.toUpperCase());
+    Mono<Message> toUpperCase(@Payload String payload) {
+        return Mono.just(payload.toUpperCase())
+                .map(Message::new);
     }
 
 
     @MessageMapping("splitString")
-    Flux<String> splitString(@Payload String payload) {
+    Flux<Character> splitString(@Payload String payload) {
         return Flux.interval(Duration.ofSeconds(1))
                 .map(index -> payload.charAt(index.intValue()))
                 .take(payload.length())
-                .map(String::valueOf)
                 .doOnNext(System.out::println);
     }
 
     @MessageMapping({"channelToUpperCase"})
-    Flux<String> channelToUpperCase(Flux<String> messages) {
+    Flux<Message> channelToUpperCase(Flux<String> messages) {
         return Flux.interval(Duration.ofSeconds(1)).zipWith(messages)
-                .map(tuple -> tuple.getT2().toUpperCase());
+                .map(tuple -> tuple.getT2().toUpperCase())
+                .map(Message::new);
     }
 
     @MessageMapping("log")

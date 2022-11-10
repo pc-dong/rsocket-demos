@@ -1,7 +1,5 @@
 package cn.dpc;
 
-import io.rsocket.Payload;
-import io.rsocket.util.DefaultPayload;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +22,9 @@ public class ClientController {
     }
 
     @GetMapping("toUpperCase")
-    Mono<String> toUpperCase(String message) {
+    Mono<Message> toUpperCase(String message) {
         return requester.route("toUpperCase").data(message)
-                .retrieveMono(String.class);
+                .retrieveMono(Message.class);
     }
 
     @GetMapping("splitString")
@@ -40,10 +38,10 @@ public class ClientController {
     }
 
     @PostMapping("channelToUpperCase")
-    Flux<String> channelToUpperCase(@RequestBody List<String> messages) {
+    Flux<Message> channelToUpperCase(@RequestBody List<String> messages) {
         return requester.route("channelToUpperCase")
                 .data(Flux.fromIterable(messages), String.class)
-                .retrieveFlux(String.class)
+                .retrieveFlux(Message.class)
                 .doOnNext(System.out::println);
     }
 
