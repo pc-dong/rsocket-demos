@@ -2,6 +2,7 @@ package cn.dpc;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.rsocket.RSocketRequester;
+import org.springframework.util.MimeType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +11,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,7 +25,9 @@ public class ClientController {
 
     @GetMapping("toUpperCase")
     Mono<Message> toUpperCase(String message) {
-        return requester.route("toUpperCase").data(message)
+        return requester.route("toUpperCase")
+                .metadata(metadataSpec -> metadataSpec.metadata(UUID.randomUUID().toString(), MimeType.valueOf("message/x.client.id")))
+                .data(message)
                 .retrieveMono(Message.class);
     }
 

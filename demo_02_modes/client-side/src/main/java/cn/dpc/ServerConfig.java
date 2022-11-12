@@ -1,6 +1,8 @@
 package cn.dpc;
 
 import io.netty.handler.codec.json.JsonObjectDecoder;
+import io.rsocket.lease.Lease;
+import io.rsocket.lease.LeaseSender;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +15,10 @@ import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler;
 import org.springframework.util.MimeType;
 import org.springframework.web.util.pattern.PathPatternRouteMatcher;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.time.Duration;
 
 @Configuration
 public class ServerConfig {
@@ -25,7 +31,10 @@ public class ServerConfig {
         return RSocketRequester.builder()
                 .rsocketStrategies(handler.getRSocketStrategies())
                 .dataMimeType(new MimeType("application", "json"))
-                .rsocketConnector(connector -> connector.acceptor(handler.responder()))
+                .rsocketConnector(connector -> connector.acceptor(handler.responder())
+                        .lease(leaseSpec -> leaseSpec.maxPendingRequests(20)
+                        .sender(() -> Flux.interval(Duration.ofSeconds(0), Duration.ofMinutes(2))
+                                .map(i -> Lease.create(Duration.ofMinutes(2), 10)))))
                 .tcp("localhost", port);
     }
 }

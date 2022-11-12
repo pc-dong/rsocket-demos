@@ -3,3 +3,7 @@ spring:
     server:
       transport: tcp
       port: 7001
+
+logging:
+  level:
+    io.rsocket: debug

@@ -31,7 +31,8 @@ public class RsocketController {
                     log.info(bar);
                 });
 
-        return Mono.empty();
+        return Mono.empty().log("connected")
+                .then();
     }
 
 
