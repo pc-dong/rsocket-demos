@@ -1,5 +1,8 @@
-package cn.dpc;
+package cn.dpc.controller;
 
+import cn.dpc.Message;
+import cn.dpc.StatusReport;
+import cn.dpc.config.annotation.GetMessageMapping;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -11,13 +14,13 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static cn.dpc.Constants.CLIENT_ID;
+import static cn.dpc.config.Constants.CLIENT_ID;
 
 @Controller
 @Log4j2
+@MessageMapping("ddd")
 public class RsocketController {
 
     @ConnectMapping
@@ -36,7 +39,7 @@ public class RsocketController {
     }
 
 
-    @MessageMapping("toUpperCase")
+    @GetMessageMapping("toUpperCase")
     Mono<Message> toUpperCase(@Payload String payload,
                               @Header(CLIENT_ID) String clientId) {
         return Mono.just(payload.toUpperCase())
@@ -44,7 +47,7 @@ public class RsocketController {
                 .log("toUpperCase " + clientId);
     }
 
-    @MessageMapping("repeatToUpperCase")
+    @GetMessageMapping("repeatToUpperCase")
     Flux<Message> repeatToUpperCase(@Payload String payload) {
         AtomicLong counter = new AtomicLong(0L);
         return Mono.fromCallable(() -> counter.getAndIncrement() + "\t" + payload.toUpperCase())

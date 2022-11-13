@@ -53,3 +53,31 @@ rsocket-cli --route=channelToUpperCase --channel -i Sunday tcp://localhost:7001
 ```shell
 rsc --route=channelToUpperCase --channel --data=- --debug tcp://localhost:7001
 ```
+
+## Posters CRUD
+
+### Create
+```shell
+rsc --route=posters.post --request --data='{"title": "title1", "content": "poster content"}' --debug tcp://localhost:7001
+```
+
+### List all
+```shell
+rsc --route=posters.get --stream --debug tcp://localhost:7001
+```
+
+### Get by ID 
+```shell
+ rsc --route=posters.bd75d9d7-80ed-4f4d-98d4-57d2faf33300.get --request --debug tcp://localhost:7001
+```
+
+### Update
+```shell
+ rsc --route=posters.bd75d9d7-80ed-4f4d-98d4-57d2faf33300.put --request --data='{"title": "title2", "content": "poster content2"}' --debug tcp://localhost:7001
+```
+
+
+### Delete
+```shell
+ rsc --route=posters.44ce108c-942e-41f9-9b39-a590f16cce22.delete --request --debug tcp://localhost:7001
+```
