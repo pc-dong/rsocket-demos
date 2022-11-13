@@ -19,7 +19,10 @@ public class ServerConfig {
     @Bean
     public RSocketStrategiesCustomizer strategiesCustomizer() {
         return strategies -> strategies
-                .metadataExtractorRegistry(registry -> registry.metadataToExtract(CLIENT_ID_MIME, String.class, CLIENT_ID));
+                .metadataExtractorRegistry(registry -> registry.metadataToExtract(CLIENT_ID_MIME, String.class, CLIENT_ID))
+                .metadataExtractorRegistry(registry -> registry.metadataToExtract(FILE_NAME_MIME, String.class, FILE_NAME))
+                .metadataExtractorRegistry(registry -> registry.metadataToExtract(FILE_EXT_MIME, String.class, FILE_EXT));
+
     }
 
     @Bean

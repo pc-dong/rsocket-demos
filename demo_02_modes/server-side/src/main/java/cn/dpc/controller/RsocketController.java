@@ -20,7 +20,6 @@ import static cn.dpc.config.Constants.CLIENT_ID;
 
 @Controller
 @Log4j2
-@MessageMapping("ddd")
 public class RsocketController {
 
     @ConnectMapping
@@ -39,7 +38,7 @@ public class RsocketController {
     }
 
 
-    @GetMessageMapping("toUpperCase")
+    @MessageMapping("toUpperCase")
     Mono<Message> toUpperCase(@Payload String payload,
                               @Header(CLIENT_ID) String clientId) {
         return Mono.just(payload.toUpperCase())
@@ -47,7 +46,7 @@ public class RsocketController {
                 .log("toUpperCase " + clientId);
     }
 
-    @GetMessageMapping("repeatToUpperCase")
+    @MessageMapping("repeatToUpperCase")
     Flux<Message> repeatToUpperCase(@Payload String payload) {
         AtomicLong counter = new AtomicLong(0L);
         return Mono.fromCallable(() -> counter.getAndIncrement() + "\t" + payload.toUpperCase())

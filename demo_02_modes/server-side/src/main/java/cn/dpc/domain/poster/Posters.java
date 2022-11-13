@@ -1,4 +1,4 @@
-package cn.dpc.domain;
+package cn.dpc.domain.poster;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

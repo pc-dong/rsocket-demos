@@ -8,6 +8,7 @@ import org.springframework.boot.rsocket.messaging.RSocketStrategiesCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.codec.StringDecoder;
+import org.springframework.http.MediaType;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.messaging.rsocket.RSocketRequester;
@@ -30,11 +31,12 @@ public class ServerConfig {
     public RSocketRequester requester(RSocketMessageHandler handler) {
         return RSocketRequester.builder()
                 .rsocketStrategies(handler.getRSocketStrategies())
-                .dataMimeType(new MimeType("application", "json"))
+//                .dataMimeType(MediaType.APPLICATION_CBOR)
                 .rsocketConnector(connector -> connector.acceptor(handler.responder())
-                        .lease(leaseSpec -> leaseSpec.maxPendingRequests(20)
-                        .sender(() -> Flux.interval(Duration.ofSeconds(0), Duration.ofMinutes(2))
-                                .map(i -> Lease.create(Duration.ofMinutes(2), 10)))))
+//                        .lease(leaseSpec -> leaseSpec.maxPendingRequests(20)
+//                        .sender(() -> Flux.interval(Duration.ofSeconds(0), Duration.ofMinutes(2))
+//                                .map(i -> Lease.create(Duration.ofMinutes(2), 10))))
+                )
                 .tcp("localhost", port);
     }
 }

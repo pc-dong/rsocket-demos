@@ -1,4 +1,4 @@
-package cn.dpc.domain;
+package cn.dpc.domain.poster;
 
 import lombok.*;
 import org.springframework.lang.NonNull;

@@ -4,14 +4,13 @@ import cn.dpc.config.annotation.DeleteMessageMapping;
 import cn.dpc.config.annotation.GetMessageMapping;
 import cn.dpc.config.annotation.PostMessageMapping;
 import cn.dpc.config.annotation.PutMessageMapping;
-import cn.dpc.domain.Poster;
-import cn.dpc.domain.Posters;
+import cn.dpc.domain.poster.Poster;
+import cn.dpc.domain.poster.Posters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -35,7 +35,8 @@ public class ClientController {
     Mono<List<String>> splitString(String message) {
         return requester.route("splitString")
                 .data(message)
-                .retrieveFlux(String.class)
+                .retrieveFlux(Character.class)
+                .map(c -> c.toString())
                 .doOnNext(System.out::println)
                 .collectList();
 
