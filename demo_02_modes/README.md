@@ -81,3 +81,16 @@ rsc --route=posters.get --stream --debug tcp://localhost:7001
 ```shell
  rsc --route=posters.44ce108c-942e-41f9-9b39-a590f16cce22.delete --request --debug tcp://localhost:7001
 ```
+
+## tracing
+
+### Install zipkin with docker 
+
+```shell
+docker run -d -p 9411:9411 openzipkin/zipkin-slim
+```
+
+### Config with rsc
+```shell
+rsc --route=channelToUpperCase --channel --trace=DEBUG --zipkinUrl http://localhost9411/ --data=- --debug tcp://localhost:7001
+```

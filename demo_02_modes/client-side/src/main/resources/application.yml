@@ -1,8 +1,19 @@
-#spring:
+spring:
 #  rsocket:
 #    server:
 #      transport: tcp
 #      port: 7002
+  zipkin:
+    base-url: http://localhost:9411/
+  output:
+    ansi:
+      enabled: always
+  sleuth:
+    sampler:
+      rate: 20
+  application:
+    name: client
+
 rsocket.port: 7001
 
 server:
