@@ -10,6 +10,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler;
+import org.springframework.security.messaging.handler.invocation.reactive.AuthenticationPrincipalArgumentResolver;
+import org.springframework.security.rsocket.metadata.BasicAuthenticationEncoder;
+import org.springframework.security.rsocket.metadata.SimpleAuthenticationEncoder;
+
 
 import static cn.dpc.config.Constants.*;
 
@@ -21,7 +25,8 @@ public class ServerConfig {
         return strategies -> strategies
                 .metadataExtractorRegistry(registry -> registry.metadataToExtract(CLIENT_ID_MIME, String.class, CLIENT_ID))
                 .metadataExtractorRegistry(registry -> registry.metadataToExtract(FILE_NAME_MIME, String.class, FILE_NAME))
-                .metadataExtractorRegistry(registry -> registry.metadataToExtract(FILE_EXT_MIME, String.class, FILE_EXT));
+                .metadataExtractorRegistry(registry -> registry.metadataToExtract(FILE_EXT_MIME, String.class, FILE_EXT))
+                .encoders(encoders -> encoders.add(new SimpleAuthenticationEncoder()));
 
     }
 
@@ -32,6 +37,8 @@ public class ServerConfig {
         RSocketMessageHandler messageHandler = new MyRSocketMessageHandler();
         messageHandler.setRSocketStrategies(rSocketStrategies);
         customizers.orderedStream().forEach((customizer) -> customizer.customize(messageHandler));
+        messageHandler.getArgumentResolverConfigurer().addCustomResolver(new AuthenticationPrincipalArgumentResolver());
+
         return messageHandler;
     }
 
