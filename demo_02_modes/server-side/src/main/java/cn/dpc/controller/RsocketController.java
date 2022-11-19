@@ -3,13 +3,17 @@ package cn.dpc.controller;
 import cn.dpc.Message;
 import cn.dpc.StatusReport;
 import cn.dpc.config.annotation.GetMessageMapping;
+import jdk.jfr.ContentType;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.annotation.ConnectMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -36,7 +40,6 @@ public class RsocketController {
         return Mono.empty().log("connected")
                 .then();
     }
-
 
     @MessageMapping("toUpperCase")
     Mono<Message> toUpperCase(@Payload String payload,

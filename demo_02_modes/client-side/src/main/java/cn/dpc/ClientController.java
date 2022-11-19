@@ -26,7 +26,8 @@ public class ClientController {
     @GetMapping("toUpperCase")
     Mono<Message> toUpperCase(String message) {
         return requester.route("toUpperCase")
-                .metadata(metadataSpec -> metadataSpec.metadata(UUID.randomUUID().toString(), MimeType.valueOf("message/x.client.id")))
+                .metadata(metadataSpec -> metadataSpec.metadata(UUID.randomUUID().toString(),
+                        MimeType.valueOf("message/x.client.id")))
                 .data(message)
                 .retrieveMono(Message.class);
     }
