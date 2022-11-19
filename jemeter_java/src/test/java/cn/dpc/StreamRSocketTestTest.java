@@ -1,17 +1,16 @@
 package cn.dpc;
 
-
-import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 import org.junit.jupiter.api.Test;
 
-class RSocketTestTest {
+import static org.junit.jupiter.api.Assertions.*;
+
+class StreamRSocketTestTest {
 
     @Test
-    void runTest() {
-        RSocketTest rSocketTest = new RSocketTest();
-
+    void setupTest() {
+        StreamRSocketTest rSocketTest = new StreamRSocketTest();
         JavaSamplerContext context = new JavaSamplerContext(rSocketTest.getDefaultParameters());
         rSocketTest.setupTest(context);
 

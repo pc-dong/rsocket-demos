@@ -15,7 +15,7 @@ import org.springframework.util.MimeType;
 
 import java.util.concurrent.CountDownLatch;
 
-public class RSocketTest extends AbstractJavaSamplerClient {
+public class StreamRSocketTest extends AbstractJavaSamplerClient {
     private static RSocketRequester rsocketRequester;
 
     @Override
@@ -51,16 +51,16 @@ public class RSocketTest extends AbstractJavaSamplerClient {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         try {
             sr.sampleStart();
-            rsocketRequester.route("toUpperCase")
-                    .metadata(metadataSpec -> metadataSpec.metadata("111", MimeType.valueOf("message/x.client.id")))
-                    .data(DefaultPayload.create("hello"))
-                    .retrieveMono(String.class)
+            rsocketRequester.route("splitString")
+                    .data("hello")
+                    .retrieveFlux(String.class)
+                    .collectList()
                     .doOnError(error -> {
                                 sr.setSuccessful(false);
                                 error.printStackTrace();
                             }
                     ).doOnSuccess(item -> {
-                        sr.setResponseData(item, null);
+                        sr.setResponseData(item.toString(), null);
                         sr.setSuccessful(true);
                     }).doOnTerminate(() -> countDownLatch.countDown())
                     .subscribe();

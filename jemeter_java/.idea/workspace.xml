@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e79486-3d45-49b7-8e3b-05cb508d12df" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/dpc/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/dpc/RSocketTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cn/dpc/UuidTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/cn/dpc/RSocketTestTest.java" afterDir="false" />
+    <list default="true" id="08e79486-3d45-49b7-8e3b-05cb508d12df" name="Changes" comment="add jmeter java request">
+      <change afterPath="$PROJECT_DIR$/../demo_02_modes/server-side/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo_02_modes/server-side/src/main/java/cn/dpc/controller/RSocketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo_02_modes/server-side/src/main/java/cn/dpc/controller/RestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo_02_modes/server-side/src/main/java/cn/dpc/controller/RestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../demo_02_modes/server-side/src/main/java/cn/dpc/controller/RsocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../demo_02_modes/server-side/src/main/java/cn/dpc/controller/RsocketController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +108,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -136,7 +128,8 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "de457ae6e620b5064bd20312a9099465"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -144,6 +137,9 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="cn.dpc" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="cn.dpc" />
     </key>
   </component>
@@ -160,27 +156,6 @@
         <option name="taskNames">
           <list>
             <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="jemeter_java [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="classes" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -248,13 +223,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StreamRSocketTestTest.setupTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jemeter_java.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.dpc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cn.dpc" />
+      <option name="MAIN_CLASS_NAME" value="cn.dpc.StreamRSocketTestTest" />
+      <option name="METHOD_NAME" value="setupTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.jemeter_java [jar]" />
-        <item itemvalue="Gradle.jemeter_java [clean]" />
+        <item itemvalue="JUnit.StreamRSocketTestTest.setupTest" />
         <item itemvalue="JUnit.RSocketTestTest.runTest" />
+        <item itemvalue="Gradle.jemeter_java [clean]" />
         <item itemvalue="Gradle.jemeter_java [build]" />
-        <item itemvalue="Gradle.jemeter_java [classes]" />
       </list>
     </recent_temporary>
   </component>
@@ -266,8 +257,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1668656912552</updated>
-      <workItem from="1668656913971" duration="17847000" />
+      <workItem from="1668656913971" duration="21164000" />
+      <workItem from="1668870886255" duration="2810000" />
     </task>
+    <task id="LOCAL-00001" summary="add jmeter java request">
+      <created>1668861586856</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668861586856</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +284,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/master" />
                       </list>
                     </value>
                   </entry>
@@ -295,5 +295,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add jmeter java request" />
+    <option name="LAST_COMMIT_MESSAGE" value="add jmeter java request" />
   </component>
 </project>

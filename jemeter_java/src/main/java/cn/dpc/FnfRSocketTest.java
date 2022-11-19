@@ -1,6 +1,5 @@
 package cn.dpc;
 
-import io.rsocket.util.DefaultPayload;
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
@@ -11,11 +10,10 @@ import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.RSocketStrategies;
-import org.springframework.util.MimeType;
 
 import java.util.concurrent.CountDownLatch;
 
-public class RSocketTest extends AbstractJavaSamplerClient {
+public class FnfRSocketTest extends AbstractJavaSamplerClient {
     private static RSocketRequester rsocketRequester;
 
     @Override
@@ -51,16 +49,15 @@ public class RSocketTest extends AbstractJavaSamplerClient {
         CountDownLatch countDownLatch = new CountDownLatch(1);
         try {
             sr.sampleStart();
-            rsocketRequester.route("toUpperCase")
-                    .metadata(metadataSpec -> metadataSpec.metadata("111", MimeType.valueOf("message/x.client.id")))
-                    .data(DefaultPayload.create("hello"))
-                    .retrieveMono(String.class)
+            rsocketRequester.route("log")
+                    .data("hello")
+                    .retrieveMono(Void.class)
                     .doOnError(error -> {
                                 sr.setSuccessful(false);
                                 error.printStackTrace();
                             }
                     ).doOnSuccess(item -> {
-                        sr.setResponseData(item, null);
+                        sr.setResponseData(String.valueOf(item), null);
                         sr.setSuccessful(true);
                     }).doOnTerminate(() -> countDownLatch.countDown())
                     .subscribe();
