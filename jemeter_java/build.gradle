@@ -1,8 +1,9 @@
+import de.qualersoft.jmeter.gradleplugin.task.*
 plugins {
     id 'java'
-//    id 'org.springframework.boot' version '2.7.5'
-//    id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id "de.qualersoft.jmeter" version "2.4.0"
+//    id "net.foragerr.jmeter" version "1.0.5-2.13"
 }
 
 def withoutBom = {
@@ -19,13 +20,7 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    implementation ('io.rsocket:rsocket-core:1.1.3')
-//    implementation 'io.projectreactor:reactor-core:3.5.0'
-//    implementation('org.springframework.boot:spring-boot-starter-rsocket:2.7.5') {
-//        exclude group: 'org.slf4j', module:'*'
-//        exclude group: 'org.slf4j', module:'slf4j-log4j12'
-//        exclude group: 'log4j', module: ' log4j'
-//    }
+    implementation 'io.rsocket:rsocket-core:1.1.3'
     implementation'org.springframework:spring-messaging:5.3.23'
     implementation'org.springframework:spring-web:5.3.23'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.14.0'
@@ -49,15 +44,32 @@ jar {
     }
 }
 
-//task customFatJar(type: Jar) {
-//    manifest {
-//        attributes 'Main-Class': 'com.baeldung.fatjar.Application'
-//    }
-//    baseName = 'all-in-one-jar'
-//    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-//    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-//}
+jmeter {
+//    jmTestFiles = [file("src/test/jmeter/RSocketTest.jmx")]
+////    jmUserPropertiesFiles = [file("src/test/jmeter/jmeter.properties")]
+//    jmSystemPropertiesFiles = [file("src/test/jmeter/server.properties")]
+//    enableExtendedReports = true
+//    maxHeapSize = '1024m'
+//    minHeapSize = '1024m'
+    jmxRootDir = file("src/test/jmeter/")
+    resultDir = file("src/test/jmeter/")
+    reportDir = file("src/test/jmeter/")
+    maxHeap = '1024m'
+}
+
+tasks.register('runJemeter', JMeterRunTask) {
+    jmxFile = "RSocketTest.jmx"
+}
+
+tasks.register('reportJemeter', JMeterReportTask) {
+    dependsOn tasks.withType(JMeterRunTask)
+    jmxFile = "RSocketTest.jmx"
+}
+
+
+tasks.register('edit', JMeterGuiTask) {
+    jmxFile = "RSocketTest.jmx"
+}
 
 test {
     useJUnitPlatform()
