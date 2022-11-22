@@ -3,7 +3,6 @@ plugins {
     id 'java'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id "de.qualersoft.jmeter" version "2.4.0"
-//    id "net.foragerr.jmeter" version "1.0.5-2.13"
 }
 
 def withoutBom = {
@@ -39,18 +38,10 @@ jar {
 
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-//        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-
     }
 }
 
 jmeter {
-//    jmTestFiles = [file("src/test/jmeter/RSocketTest.jmx")]
-////    jmUserPropertiesFiles = [file("src/test/jmeter/jmeter.properties")]
-//    jmSystemPropertiesFiles = [file("src/test/jmeter/server.properties")]
-//    enableExtendedReports = true
-//    maxHeapSize = '1024m'
-//    minHeapSize = '1024m'
     jmxRootDir = file("src/test/jmeter/")
     resultDir = file("src/test/jmeter/")
     reportDir = file("src/test/jmeter/")

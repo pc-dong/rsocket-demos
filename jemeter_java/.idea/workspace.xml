@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08e79486-3d45-49b7-8e3b-05cb508d12df" name="Changes" comment="add jmeter java request">
-      <change afterPath="$PROJECT_DIR$/src/test/jmeter/RSocketTest.jmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="08e79486-3d45-49b7-8e3b-05cb508d12df" name="Changes" comment="add jmeter plugin">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
@@ -243,7 +240,8 @@
       <workItem from="1668870886255" duration="3104000" />
       <workItem from="1668998802447" duration="596000" />
       <workItem from="1669003561991" duration="9268000" />
-      <workItem from="1669025719083" duration="3471000" />
+      <workItem from="1669025719083" duration="4779000" />
+      <workItem from="1669080291487" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="add jmeter java request">
       <created>1668861586856</created>
@@ -252,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668861586856</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add jmeter plugin">
+      <created>1669040096520</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669040096520</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +291,7 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="add jmeter java request" />
-    <option name="LAST_COMMIT_MESSAGE" value="add jmeter java request" />
+    <MESSAGE value="add jmeter plugin" />
+    <option name="LAST_COMMIT_MESSAGE" value="add jmeter plugin" />
   </component>
 </project>
