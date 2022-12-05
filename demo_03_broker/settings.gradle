@@ -1,0 +1,8 @@
+rootProject.name = 'demo_03_broker'
+
+
+include 'server-side'
+include 'client-side'
+include 'common'
+include 'broker'
+

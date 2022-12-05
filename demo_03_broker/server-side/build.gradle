@@ -1,0 +1,7 @@
+plugins {
+    id 'rsocket.app'
+}
+
+dependencies {
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.85.Final:osx-aarch_64'
+}

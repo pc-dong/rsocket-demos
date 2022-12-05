@@ -1,0 +1,6 @@
+io:
+  rsocket:
+    broker:
+      uri: tcp://0.0.0.0:8001
+      cluster:
+        uri: tcp://0.0.0.0:7001
