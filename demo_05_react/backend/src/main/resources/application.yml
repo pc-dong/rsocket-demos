@@ -1,0 +1,10 @@
+spring:
+  rsocket:
+    server:
+      transport: websocket
+      port: 8081
+      address: 0.0.0.0
+      mapping-path: /rsocket
+logging:
+  level:
+    root: debug
